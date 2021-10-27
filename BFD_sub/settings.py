@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'BFD.urls'
+ROOT_URLCONF = 'BFD_sub.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BFD.wsgi.application'
+WSGI_APPLICATION = 'BFD_sub.wsgi.application'
 
 
 # Database
