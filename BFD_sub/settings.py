@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bfdPages.apps.BfdpagesConfig',
+<<<<<<< Updated upstream
     'trackOrders.apps.TrackordersConfig',
+=======
+    'createOrder.apps.CreateorderConfig',
+>>>>>>> Stashed changes
 ]
 
 MIDDLEWARE = [
