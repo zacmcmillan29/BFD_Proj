@@ -10,3 +10,6 @@ def aboutPageView(request):
 
 def productPageView(request):
     return HttpResponse("Product list page")
+
+def orderPageView(request):
+    return render(request, 'orderpages/BFD_OrderFormcopy.html')
