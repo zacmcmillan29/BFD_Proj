@@ -1,12 +1,11 @@
 from django.contrib import admin
 
 # Register your models here.
-# Register your models here.
-# other models --> , , Trip_Category, Destination, Interests
-from .models import Customer
+from .models import Employee, Employee_Position, Person, Customer
+
 
 # Register your models here
+admin.site.register(Person)
 admin.site.register(Customer)
-# admin.site.register(Trip_Category)
-# admin.site.register(Destination)
-# admin.site.register(Interests)
+admin.site.register(Employee_Position)
+admin.site.register(Employee)
