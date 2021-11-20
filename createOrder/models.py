@@ -150,13 +150,13 @@ class product_category(models.Model):
 
 ####################################### TABLE 6 ################################################### product
 
-class product_category(models.Model):
+class product(models.Model):
     # don't need to make id, becuase python will do it= autogenerates!
     product_name = models.CharField(max_length=25)
     product_category_id = models.ForeignKey(
         product_category,
         default="",
-        verbose_name="Category ID",
+        verbose_name="Product Category ID",
         on_delete=models.DO_NOTHING,
         to_field="id",
     )
@@ -174,7 +174,32 @@ class product_category(models.Model):
         return self.product_name
 
 
-####################################### TABLE 7 ###################################################
+####################################### TABLE 7 ################################################### order_detail
+
+class order_detail(models.Model):
+    # don't need to make id, becuase python will do it= autogenerates!
+    product_id = models.ForeignKey(
+        product,
+        default="",
+        verbose_name="Product ID",
+        on_delete=models.DO_NOTHING,
+        to_field="id",
+    )
+    quantity = models.IntegerField(null=True)
+    quoted_price = models.DecimalField( max_digits=6, decimal_places=2)
+    order_notes = models.CharField(max_length = 500)
+
+    # This links THIS model to the database table (:
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
+
+    class Meta:
+        db_table = "order_detail"
+
+    # ACCESS DATA--> if try to look at a single record, we are going to return the description
+    # the description= the description field from the table
+    # This is what is going to be displayed to the ADMIN!!
+    def __str__(self):
+        return self.product_id + " " + self.order_notes
 
 
 ####################################### TABLE 8 ###################################################
