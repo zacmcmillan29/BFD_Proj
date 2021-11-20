@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from datetime import datetime, timedelta
 # Create your models here.
 
 # --> for null/not null constraints --> https://newbedev.com/not-null-constraint-failed-after-adding-to-models-py
@@ -125,10 +125,7 @@ class Employee(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
-#####  Tables left to fill #####
-# order_details
-# order
-# ticket
+
 ####################################### TABLE 5 ################################################### product_category
 
 class product_category(models.Model):
@@ -202,7 +199,82 @@ class order_detail(models.Model):
         return self.product_id + " " + self.order_notes
 
 
-####################################### TABLE 8 ###################################################
+####################################### TABLE 8 ################################################### job order
+
+class job_order(models.Model):
+    # don't need to make id, becuase python will do it= autogenerates!
+    order_date = models.DateTimeField(default=datetime.today, blank = True)
+    customer_id = models.ForeignKey(
+        Customer,
+        default="",
+        verbose_name="Customer ID",
+        on_delete=models.DO_NOTHING,
+        to_field="id",
+    )
+    employee_id = models.ForeignKey(
+        Employee,
+        default="",
+        verbose_name="Employee ID",
+        on_delete=models.DO_NOTHING,
+        to_field="id",
+    )
 
 
-####################################### TABLE 9 ###################################################
+    # This links THIS model to the database table (:
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
+
+    class Meta:
+        db_table = "job_order"
+
+    # ACCESS DATA--> if try to look at a single record, we are going to return the description
+    # the description= the description field from the table
+    # This is what is going to be displayed to the ADMIN!!
+    def __str__(self):
+        return self.order_date + " " + self.employee_id
+
+
+####################################### TABLE 9 ################################################### ticket
+
+
+class ticket(models.Model):
+    # don't need to make id, becuase python will do it= autogenerates!
+    order_id = models.ForeignKey(
+        job_order,
+        default="",
+        verbose_name="Order ID",
+        on_delete=models.DO_NOTHING,
+        to_field="id",
+    )
+    product_id = models.ForeignKey(
+        product,
+        default="",
+        verbose_name="Product ID",
+        on_delete=models.DO_NOTHING,
+        to_field="id",
+    )
+    employee_id = models.ForeignKey(
+        Employee,
+        default="",
+        verbose_name="Employee ID",
+        on_delete=models.DO_NOTHING,
+        to_field="id",
+    )
+    confirmed_date = models.DateTimeField(default=datetime.today, blank = True)
+    status = models.CharField( max_length=15)
+    status_change_date = models.DateTimeField(default=datetime.today, blank = True)
+    filing_cabinet = models.CharField( max_length=10)
+    file_name = models.CharField( max_length=25)
+    notes = models.CharField( max_length=500)
+
+
+    # This links THIS model to the database table (:
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
+
+    class Meta:
+        db_table = "ticket"
+
+    # ACCESS DATA--> if try to look at a single record, we are going to return the description
+    # the description= the description field from the table
+    # This is what is going to be displayed to the ADMIN!!
+    def __str__(self):
+        return self.order_id + " " + self.status + " " + self.notes
