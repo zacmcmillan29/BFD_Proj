@@ -19,7 +19,7 @@ class Person(models.Model):
     email = models.CharField(max_length=30)
 
     # This links THIS model to the database table (:
-    # python will automatically do this, but this just makes SURE and will override what python automailly does
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
 
     class Meta:
         db_table = "person"
@@ -57,7 +57,7 @@ class Customer(models.Model):
     )
 
     # This links THIS model to the database table (:
-    # python will automatically do this, but this just makes SURE and will override what python automailly does
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
 
     class Meta:
         db_table = "customer"
@@ -78,7 +78,7 @@ class Employee_Position(models.Model):
     position_description = models.CharField(max_length=50)
 
     # This links THIS model to the database table (:
-    # python will automatically do this, but this just makes SURE and will override what python automailly does
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
 
     class Meta:
         db_table = "emp_position"
@@ -112,7 +112,7 @@ class Employee(models.Model):
     )
 
     # This links THIS model to the database table (:
-    # python will automatically do this, but this just makes SURE and will override what python automailly does
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
 
     class Meta:
         db_table = "employee"
