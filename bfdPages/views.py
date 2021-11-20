@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def indexPageView(request):
-    return HttpResponse("Home Page")
+    return render(request, "bfdPages/index.html")
 
 
 def aboutPageView(request):
@@ -13,7 +13,3 @@ def aboutPageView(request):
 
 def productPageView(request):
     return HttpResponse("Product list page")
-
-
-def orderPageView(request):
-    return render(request, 'createOrder/createOrder.html')
