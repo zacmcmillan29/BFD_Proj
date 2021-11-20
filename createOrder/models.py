@@ -126,15 +126,52 @@ class Employee(models.Model):
         return self.first_name + " " + self.last_name
 
 #####  Tables left to fill #####
-# product_category
-# product
 # order_details
 # order
 # ticket
-####################################### TABLE 5 ###################################################
+####################################### TABLE 5 ################################################### product_category
 
+class product_category(models.Model):
+    # don't need to make id, becuase python will do it= autogenerates!
+    product_category_name = models.CharField(max_length=50)
+    product_category_description = models.CharField(max_length=30)
 
-####################################### TABLE 6 ###################################################
+    # This links THIS model to the database table (:
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
+
+    class Meta:
+        db_table = "product_cateogory"
+
+    # ACCESS DATA--> if try to look at a single record, we are going to return the description
+    # the description= the description field from the table
+    # This is what is going to be displayed to the ADMIN!!
+    def __str__(self):
+        return self.product_category_description
+
+####################################### TABLE 6 ################################################### product
+
+class product_category(models.Model):
+    # don't need to make id, becuase python will do it= autogenerates!
+    product_name = models.CharField(max_length=25)
+    product_category_id = models.ForeignKey(
+        product_category,
+        default="",
+        verbose_name="Category ID",
+        on_delete=models.DO_NOTHING,
+        to_field="id",
+    )
+
+    # This links THIS model to the database table (:
+    # python will automatically do this, but this just makes SURE and will override what python automatically does
+
+    class Meta:
+        db_table = "product"
+
+    # ACCESS DATA--> if try to look at a single record, we are going to return the description
+    # the description= the description field from the table
+    # This is what is going to be displayed to the ADMIN!!
+    def __str__(self):
+        return self.product_name
 
 
 ####################################### TABLE 7 ###################################################
