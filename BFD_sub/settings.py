@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'BFD_sub.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'BFD_DB',
+        'USER': 'postgres',
+        'PASSWORD': 'jazz0905',
+        'HOST': 'localhost',
+        'PORT': '5433'
     }
 }
 

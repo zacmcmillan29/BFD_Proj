@@ -7,16 +7,16 @@ from datetime import datetime
 ########################################## TABLE 1 ###################################################
 class Person(models.Model):
     # don't need to make id, becuase python will do it= autogenerates!
-    first_name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
-    address = models.Charfield(max_length=70)
+    address = models.Charfield(max_length=40, null=True)
     # user_name = models.CharField(max_length=20)
     # password = models.CharField(max_length=20)
-    city = models.Charfield(max_length=30)
-    state = models.Charfield(max_length=2)
-    zip = models.IntegerField(max_length=5)
+    city = models.Charfield(max_length=20, null=True)
+    state = models.Charfield(max_length=20, null=True)
+    zip = models.IntegerField(max_length=5, null=True)
     phone = models.CharField(max_length=10)
-    email = models.CharField(max_length=50)
+    email = models.CharField(max_length=30)
 
     # This links THIS model to the database table (:
     # python will automatically do this, but this just makes SURE and will override what python automailly does
@@ -34,12 +34,27 @@ class Person(models.Model):
 ########################################### TABLE 2 ###############################################
 class Customer(models.Model):
     # don't need to make id, becuase python will do it= autogenerates!
-    first_name = models.CharField(max_length=30)
+
+    #
+    #
+    #first_name = models.CharField(max_length=30)
     business_name = models.CharField(max_length=30)
     # user_name = models.CharField(max_length=20)
     # password = models.CharField(max_length=20)
     # edit this later!
-    customer_request_notes = models.CharField(max_length=260)
+    customer_request_notes = models.CharField(max_length=60)
+    # edit this later! --> do we need this?
+    #
+    #
+    # HOW do we make sure this inherits from the person class??
+    # How do we see the person class table??
+    person_id = models.ForeignKey(
+        Person,
+        default="",
+        verbose_name="Person ID",
+        on_delete=models.DO_NOTHING,
+        to_field="person_id",
+    )
 
     # This links THIS model to the database table (:
     # python will automatically do this, but this just makes SURE and will override what python automailly does
@@ -59,8 +74,8 @@ class Customer(models.Model):
 
 class Employee_Position(models.Model):
     # don't need to make id, becuase python will do it= autogenerates!
-    emp_position = models.models.CharField(max_length=30)
-    emp_position_description = models.CharField(max_length=260)
+    position = models.CharField(max_length=20)
+    position_description = models.CharField(max_length=50)
 
     # This links THIS model to the database table (:
     # python will automatically do this, but this just makes SURE and will override what python automailly does
@@ -80,9 +95,9 @@ class Employee_Position(models.Model):
 
 class Employee(models.Model):
     # don't need to make id, becuase python will do it= autogenerates!
-    hire_date = models.DateField((""), auto_now=False, auto_now_add=False)
+    hire_date = models.DateField(verbose_name="When Hired")
     # need to make this SINGULAR
-    qualifications = models.CharField(max_length=30)
+    qualifications = models.CharField(max_length=15)
     # user_name = models.CharField(max_length=20)
     # password = models.CharField(max_length=20)
     # edit this later!
