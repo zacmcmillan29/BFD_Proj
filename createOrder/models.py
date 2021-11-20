@@ -2,6 +2,8 @@ from django.db import models
 from datetime import datetime
 # Create your models here.
 
+# --> for null/not null contraints --> https://newbedev.com/not-null-constraint-failed-after-adding-to-models-py
+
 
 # Create your models here.
 ########################################## TABLE 1 ###################################################
