@@ -13,3 +13,6 @@ def aboutPageView(request):
 
 def productPageView(request):
     return HttpResponse("Product list page")
+
+def orderPageView(request) :
+    return HttpResponse("Order page")
