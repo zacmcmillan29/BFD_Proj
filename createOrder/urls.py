@@ -11,5 +11,4 @@ urlpatterns = [
     path("storeorder/", storeOrderPageView, name='storeorder'),
     path("order/", OrdersSummaryView, name="orders"),
     path("orders/", OrdersSummaryView, name="orders")
-
 ]
