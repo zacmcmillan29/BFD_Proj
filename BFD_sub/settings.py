@@ -82,9 +82,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'BFD_DB',
         'USER': 'postgres',
-        'PASSWORD': '403',
+        'PASSWORD': 'jazz0905',
         'HOST': 'localhost',
-        'PORT': '5432'
+        'PORT': '5433'
     }
 }
 
