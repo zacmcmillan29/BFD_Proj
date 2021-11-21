@@ -7,7 +7,6 @@ from .views import orderPageView, storeOrderPageView, OrdersSummaryView
 
 # we create the path with this syntax
 urlpatterns = [
-
     path("createorder/", orderPageView, name="orders"),
     path("storeorder/", storeOrderPageView, name='storeorder'),
     path("order/", OrdersSummaryView, name="orders"),
